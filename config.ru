@@ -7,6 +7,6 @@ end
 
 use Rack::MethodOverride
 
-run ApplicationController
 use UsersController
 use WinesController
+run ApplicationController

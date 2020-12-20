@@ -7,6 +7,15 @@
 
   footer.branding {
     text-align: right;
-   }
+  }
+
+  .error {
+    color: red;
+  }
+  .message {
+    color: green;
+  }
+
+  
 
 }
