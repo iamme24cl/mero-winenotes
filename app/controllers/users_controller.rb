@@ -81,8 +81,19 @@ class UsersController < ApplicationController
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-    @user = User.find_by(:id => params[:id])
-    redirect "/"
+    if logged_in?
+      @user = User.find_by(:id => params[:id])
+      if @user == current_user
+        @user.delete
+        flash[:message] = "Successfully deleted account!"
+        redirect "/"
+      else
+        flash[:error] = "You are not authorized to delete this account!"
+        redirect "/users/#{@user.id}"
+      end
+    else
+      redirect "/login"
+    end
   end
 
   get '/logout' do

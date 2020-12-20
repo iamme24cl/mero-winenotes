@@ -8,8 +8,8 @@
 <% if @user == current_user %>
   <a class="btn btn-default" href="/users/<%= @user.id %>/edit" role="button">Edit Profile</a>
 
-  <form>
-    <input type="hidden" name="_method" value="delete">
+  <form method="POST" action="/users/<%= @user.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input class="btn btn-default" type="submit" value="Delete Account">
   </form>
 <% end %>
