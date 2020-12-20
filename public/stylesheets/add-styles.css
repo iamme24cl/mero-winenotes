@@ -1,0 +1,12 @@
+@media screen {
+
+  body {
+    background-image: url("https://images.unsplash.com/photo-1578911373434-0cb395d2cbfb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8d2luZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+    background-repeat: repeat;
+  }
+
+  footer.branding {
+    text-align: right;
+   }
+
+}
