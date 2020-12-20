@@ -32,8 +32,9 @@
 
       <nav >
         <% if logged_in? %>
-          Welcome back <%= current_user.name %>
+          Welcome Back! <%= current_user.name %> |
           <a href="/wines">My Wines</a> |
+          <a href="/users/:id">My Profile</a> |
           <a href="/wines/new">Add New Wine</a> |
           <a href="/logout">Logout</a>
         <% else %> 

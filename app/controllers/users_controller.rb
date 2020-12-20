@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
+    @users = User.all
     erb :"/users/index.html"
   end
 
@@ -58,16 +59,34 @@ class UsersController < ApplicationController
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    @user = User.find_by(:id => params[:id])
     erb :"/users/edit.html"
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
-    redirect "/users/:id"
+    if logged_in?
+      @user = User.find_by(:id => params[:id])
+      if @user == current_user && @user.update(:name => params[:name], :email => params[:email])        
+        flash[:message] = "Successfully updated profile!"
+        redirect "/users/#{@user.id}"
+      else
+        flash[:error] = "Update failed: #{@user.errors.full_messages.to_sentence}"
+        redirect "/users/#{@user.id}/edit"
+      end
+    else
+      redirect "/login"
+    end
   end
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-    redirect "/users"
+    @user = User.find_by(:id => params[:id])
+    redirect "/"
+  end
+
+  get '/logout' do
+    session.clear
+    redirect '/'
   end
 end
