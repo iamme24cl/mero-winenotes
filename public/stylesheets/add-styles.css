@@ -24,8 +24,13 @@
     text-align: center;
   }
 
+  form {
+    margin-top: 20px;
+  }
+
   .btn.btn-default {
     border: 0.5px solid black;
   }
+
 
 }

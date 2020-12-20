@@ -17,19 +17,42 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    raise params.inspect
     @user = User.new(params)
 
     if user.save
+      # log in the user
       session[:user_id] = @user.id
+      # redirect to user show page
       redirect "/users/#{@user.id}"
     else
       redirect "/users/new.html"
     end
   end
 
-  # GET: /users/5
+  # render login form
+  get '/login' do
+    erb :"users/login.html"
+  end
+
+  post '/login' do
+    # find the user
+    @user = User.find_by(:email => params[:email])
+    # authenticate the user
+    if @user && @user.authenticate(params[:password])
+    # log the user in
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    else
+      flash[:error] = "Invalid Credentials. Please try again!"
+      redirect '/login'
+    end
+  end
+
+  # GET: /users/5 
+  # Users Show route
   get "/users/:id" do
+    # find the user
+    @user = User.find_by(:id => params[:id])
     erb :"/users/show.html"
   end
 
