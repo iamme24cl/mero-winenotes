@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  # Sign up route that renders register/signup form
+  get '/register' do
+    erb :'users/new.html'
+  end
+
   # GET: /users
   get "/users" do
     erb :"/users/index.html"
@@ -12,7 +17,15 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    redirect "/users"
+    raise params.inspect
+    @user = User.new(params)
+
+    if user.save
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    else
+      redirect "/users/new.html"
+    end
   end
 
   # GET: /users/5
