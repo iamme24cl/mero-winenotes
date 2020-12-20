@@ -16,6 +16,8 @@
     color: green;
   }
 
-  
+  .greeting {
+    text-align: center;
+  }
 
 }

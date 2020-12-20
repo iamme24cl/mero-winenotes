@@ -30,8 +30,16 @@
         <h3 class="message"><%= flash[:message] %></h3>
       <% end %>
 
-      <nav>
-        <%  %>
+      <nav >
+        <% if logged_in? %>
+          Welcome back <%= current_user.name %>
+          <a href="/wines">My Wines</a> |
+          <a href="/wines/new">Add New Wine</a> |
+          <a href="/logout">Logout</a>
+        <% else %> 
+          <a href="/register">Register</a> |
+          <a href="/login">Login</a> 
+        <% end %>
       </nav>
 
         <%= yield %>
