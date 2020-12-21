@@ -4,7 +4,7 @@
   <% @wines.each do |wine| %>
 
     <div style="text-align:center" class="col-md-4">
-      <a target="_blank" href="<%= wine.image_url %>">
+      <a href="/wines/<%= wine.id %>">
         <img src="<%= wine.image_url %>">
       </a>
       <br><br>

@@ -1,6 +1,11 @@
 ## App name - mero-winenotes
 
-An app that lets you take notes of your favorite wines. When working as a sommelier, I was constantly tasting new wines and taking notes of them. My goal with this app is to build something that the user can use to take notes in a pattern that sommeliers or individuals in similar field generally use. I would like this app be able to takes notes of producer/winery name, the grape varietal(s) used to make the wine, the appelation(region), the vintage, price, an image_url for display and finally the tasting notes.
+An app that lets you take notes of your favorite wines. When working as a sommelier, I was constantly tasting new wines and taking notes of them. My goal with this app is to build something that the user can use to take notes in a pattern that sommeliers or individuals in similar fields generally use. I would like this app be able to takes notes of producer/winery name, the grape varietal(s) used to make the wine, the appelation(region), the vintage, price, an image_url for display and finally the tasting notes. 
+	The user should be able to Log in and out.
+	The user should be able to create, update and delete thier account. 
+	The user should be able to only view thier own wines.
+	The user should be able to create, read, update and delete a wine that belongs to them.
+
 
 ## Models with association
 
