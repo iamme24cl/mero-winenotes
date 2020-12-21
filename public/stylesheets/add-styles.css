@@ -10,6 +10,10 @@
     border-radius: 10px;
   }
 
+  nav {
+    margin: 30px;
+  }
+ 
   h2, h3, h4 {
     text-align: center;
   }
@@ -35,6 +39,10 @@
     font-size: 1.2rem;
   }
 
+  .tasting-notes {
+    padding-top: 16px;
+  }
+
   footer.branding {
     text-align: right;
   }
@@ -48,10 +56,6 @@
 
   .greeting {
     text-align: center;
-  }
-
-  nav {
-    margin-bottom: 30px;
   }
 
   .btn.btn-default {

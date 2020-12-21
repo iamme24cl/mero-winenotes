@@ -18,21 +18,22 @@ class WinesController < ApplicationController
 
   # POST: /wines
   post "/wines" do
-    @wine = Wine.new(name: params[:wine][:name], varietal: params[:wine][:varietal], appelation: params[:wine][:appelation], 
+    wine = Wine.new(name: params[:wine][:name], varietal: params[:wine][:varietal], appelation: params[:wine][:appelation], 
     vintage: params[:wine][:vintage], price: params[:wine][:price], image_url: params[:wine][:image_url], tasting_notes: params[:wine][:tasting_notes], 
     user_id: current_user.id)
-    
-    if @wine.save
+
+    if wine.save
       flash[:message] = "Successfully added wine to your collection!"
-      redirect "/wines/#{@wine.id}"
+      redirect "/wines/#{wine.id}"
     else
-      flash[:error] = "Failed adding wine: #{@wine.errors.full_messages.to_sentence}"
+      flash[:error] = "Failed adding wine: #{wine.errors.full_messages.to_sentence}"
       redirect "/wines/new"
     end
   end
 
   # GET: /wines/5
   get "/wines/:id" do
+    @wine = Wine.find_by(:id => params[:id])
     erb :"/wines/show.html"
   end
 

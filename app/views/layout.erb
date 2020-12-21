@@ -16,18 +16,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
-    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <link rel="stylesheet" href="/stylesheets/add-styles.css" />
 
   </head>
   <body>
     <div class="wrapper">
 
       <% if flash[:error] %>
-        <h3 class="error"><%= flash[:error] %></h3>
+        <em class="error"><%= flash[:error] %></em>
       <% end %>
 
       <% if flash[:message] %>
-        <h3 class="message"><%= flash[:message] %></h3>
+        <em class="message"><%= flash[:message] %></em>
       <% end %>
 
       <nav >

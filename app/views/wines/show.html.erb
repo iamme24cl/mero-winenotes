@@ -1,1 +1,42 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h2><%= @wine.name %>, <%= @wine.varietal %></h2>
+
+
+  <a target="_blank" href="<%= @wine.image_url %>">
+    <img src="<%= @wine.image_url %>">
+  </a>
+  <br><br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h5><%= @wine.name %></a></h5>
+      <ul>
+        <li>Varietal - <%= @wine.varietal %></li>
+        <li>Appelation -	<%= @wine.appelation %></li>
+        <li>Vintage - <%= @wine.vintage %></li>
+        <li>Price - $<%= @wine.price %></li>
+      </ul>
+    </div>
+
+    <div class="col-md-8">
+      <p class="tasting-notes">Tasting Notes: <%= @wine.tasting_notes %></p>
+    </div>
+  </div>
+
+
+
+<% if @wine.user == current_user %>
+  <a class="btn btn-default" href="/wines/<%= @wine.id %>/edit" role="button">Edit Wine</a>
+
+  <form method="POST" action="/wines/<%= @wine.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input class="btn btn-default" type="submit" value="Delete Wine">
+  </form>
+<% end %>
+
+
+ 
+
+
+
+ 
+
