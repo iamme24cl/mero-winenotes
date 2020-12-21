@@ -18,13 +18,13 @@
     </div>
 
     <div class="col-md-8">
-      <p class="tasting-notes">Tasting Notes: <%= @wine.tasting_notes %></p>
+      <p class="tasting-notes"><b>Tasting Notes</b><br><br><%= @wine.tasting_notes %></p>
     </div>
   </div>
 
 
 
-<% if @wine.user == current_user %>
+<% if authorized_to_edit?(@wine) %>
   <a class="btn btn-default" href="/wines/<%= @wine.id %>/edit" role="button">Edit Wine</a>
 
   <form method="POST" action="/wines/<%= @wine.id %>/delete">

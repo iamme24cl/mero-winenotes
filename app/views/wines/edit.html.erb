@@ -1,1 +1,42 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h3>Update Wine</h3>
+
+<form action="/wines/<%= @wine.id %>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Name" name="wine[name]" value="<%= @wine.name %>">
+  </div>
+
+  <div class="form-group">
+    <label for="wine_varietal">Varietal</label>
+    <input type="text" class="form-control" id="wine_varietal"  name="wine[varietal]" value="<%= @wine.varietal %>">
+  </div>
+
+  <div class="form-group">
+    <label for="appelation">Appelation</label>
+    <input type="text" class="form-control" id="appelation"  name="wine[appelation]" value="<%= @wine.appelation %>">
+  </div>
+
+  <div class="form-group">
+    <label for="vintage">Vintage</label>
+    <input type="text" class="form-control" id="vintage" placeholder="Enter NV if no Vintage"  name="wine[vintage]" value="<%= @wine.vintage %>">
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" class="form-control" id="name"  name="wine[price]" value="<%= @wine.price %>">
+  </div>
+
+  <div class="form-group">
+    <label for="image_url">Image_URL</label>
+    <input type="text" class="form-control" id="image_url"  name="wine[image_url]" value="<%= @wine.image_url %>">
+  </div>
+
+  <div class="form-group">
+    <label for="tasting_notes">Tasting</label>
+    <input type="text" class="form-control" id="tasting_notes"  name="wine[tasting_notes]" value="<%= @wine.tasting_notes %>">
+  </div>
+
+  <button type="submit" class="btn btn-default">Update Wine</button>
+</form>
+
