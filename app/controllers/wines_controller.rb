@@ -69,6 +69,18 @@ class WinesController < ApplicationController
 
   # DELETE: /wines/5/delete
   delete "/wines/:id/delete" do
-    redirect "/wines"
+    if logged_in?
+      @wine = Wine.find_by(:id => params[:id])
+      if authorized_to_edit?(@wine)
+        @wine.delete
+        flash[:message] = "Successfully deleted Wine!"
+        redirect "/wines"
+      else
+        flash[:error] = "You are not authorized to delete this Wine!"
+        redirect "/wines/#{@wine.id}"
+      end
+    else
+      redirect "/login"
+    end
   end
 end
