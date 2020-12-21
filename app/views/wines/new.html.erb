@@ -3,19 +3,39 @@
 <form action="/wines" method="POST">
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+    <input type="text" class="form-control" id="name" placeholder="Name" name="wine[name]">
   </div>
 
   <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="chandra@example.com" name="email">
+    <label for="wine_varietal">Varietal</label>
+    <input type="text" class="form-control" id="wine_varietal"  name="wine[varietal]">
   </div>
 
   <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+    <label for="appelation">Appelation</label>
+    <input type="text" class="form-control" id="appelation"  name="wine[appelation]">
   </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
+  <div class="form-group">
+    <label for="vintage">Vintage</label>
+    <input type="text" class="form-control" id="vintage" placeholder="Enter NV if no Vintage"  name="wine[vintage]">
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input type="text" class="form-control" id="name"  name="wine[price]">
+  </div>
+
+  <div class="form-group">
+    <label for="image_url">Image_URL</label>
+    <input type="text" class="form-control" id="image_url"  name="wine[image_url]">
+  </div>
+
+  <div class="form-group">
+    <label for="tasting_notes">Tasting</label>
+    <textarea type="text" class="form-control" id="tasting_notes"  name="wine[tasting_notes]"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-default">Add Wine</button>
 </form>
 
