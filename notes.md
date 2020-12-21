@@ -63,7 +63,7 @@ update!
 
 The bang versions (e.g. save!) raise an exception if the record is invalid. The non-bang versions don't: save and update return false, and create returns the object.
 
-## playlists/show.erb
+## playlists/show.erb - Show these buttons only if the resource belongs to the current user
 
 <% if authorized_to_edit?(@wine) %>
 
@@ -86,7 +86,17 @@ background-image: url("https://images.unsplash.com/photo-1578911373434-0cb395d2c
 ----
 Wines - data for seed file
 
-Wine.create(name: , varietal: , appelation: , vintage: , price: , image_url: , tasting_notes: , user_id: chandra.id)
+Wine.create(
+  name: , 
+  varietal: , 
+  appelation: , 
+  vintage: , 
+  price: , 
+  image_url: , 
+  tasting_notes: , 
+  user_id: chandra.id
+)
+
 
 # Sauvignon Blanc, Domaine Delaporte, ‘Chavignol,’ Sancerre 2018
 	Producer: "Domaine Delaporte"
