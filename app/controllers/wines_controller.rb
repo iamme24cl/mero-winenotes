@@ -11,6 +11,7 @@ class WinesController < ApplicationController
     erb :"/wines/index.html"
   end
 
+  # CREATE
   # GET: /wines/new
   get "/wines/new" do
     erb :"/wines/new.html"
@@ -18,10 +19,16 @@ class WinesController < ApplicationController
 
   # POST: /wines
   post "/wines" do
-    wine = Wine.new(name: params[:wine][:name], varietal: params[:wine][:varietal], appelation: params[:wine][:appelation], 
-    vintage: params[:wine][:vintage], price: params[:wine][:price], image_url: params[:wine][:image_url], tasting_notes: params[:wine][:tasting_notes], 
-    user_id: current_user.id)
-
+    wine = Wine.new(
+      name: params[:wine][:name], 
+      varietal: params[:wine][:varietal], 
+      appelation: params[:wine][:appelation], 
+      vintage: params[:wine][:vintage], 
+      price: params[:wine][:price], 
+      image_url: params[:wine][:image_url], 
+      tasting_notes: params[:wine][:tasting_notes], 
+      user_id: current_user.id
+    )
     # save triggers ActiveRecord input validation 
     if wine.save
       flash[:message] = "Successfully added wine to your collection!"
