@@ -1,4 +1,9 @@
 class WinesController < ApplicationController
+  # `before` method takes in a `url pattern` for which to apply the following rule
+  # require user to login before
+  before '/wines*' do
+    authentication_required
+  end
 
   # GET: /wines
   get "/wines" do

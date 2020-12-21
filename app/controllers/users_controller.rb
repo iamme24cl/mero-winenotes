@@ -40,9 +40,9 @@ class UsersController < ApplicationController
     @user = User.find_by(:email => params[:email])
     # authenticate the user
     if @user && @user.authenticate(params[:password])
-    # log the user in
+    # log the user in and redirect to user's wines index page
       session[:user_id] = @user.id
-      redirect "/users/#{@user.id}"
+      redirect "/wines"
     else
       flash[:error] = "Invalid Credentials. Please try again!"
       redirect '/login'
