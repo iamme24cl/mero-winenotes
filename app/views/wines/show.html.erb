@@ -1,4 +1,4 @@
-<h2><%= @wine.name %>, <%= @wine.varietal %></h2>
+<h2><%= @wine.name.titleize %>, <%= @wine.varietal.titleize %></h2>
 
 
   <a target="_blank" href="<%= @wine.image_url %>">
@@ -8,10 +8,10 @@
 
   <div class="row">
     <div class="col-md-4">
-      <h5><%= @wine.name %></a></h5>
+      <h5><%= @wine.name.titleize %></a></h5>
       <ul>
-        <li>Varietal - <%= @wine.varietal %></li>
-        <li>Appelation -	<%= @wine.appelation %></li>
+        <li>Varietal - <%= @wine.varietal.titleize %></li>
+        <li>Appelation -	<%= @wine.appelation.titleize %></li>
         <li>Vintage - <%= @wine.vintage %></li>
         <li>Price - $<%= @wine.price %></li>
       </ul>

@@ -40,7 +40,7 @@
   }
 
   .tasting-notes {
-    padding-top: 16px;
+    padding-top: 8px;
   }
 
   footer.branding {
@@ -61,6 +61,10 @@
   .btn.btn-default {
     margin-top: 5px;
     border: 2px solid black;
+  }
+
+  .btn.btn-default:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
   }
 
 

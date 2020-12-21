@@ -9,10 +9,10 @@
       </a>
       <br><br>
 
-      <h5><a href="/wines/<%= wine.id %>"><%= wine.name %></a></h5>
+      <h5><a href="/wines/<%= wine.id %>"><%= wine.name.titleize %></a></h5>
       <ul>
-        <li>Varietal - <%= wine.varietal %></li>
-        <li>Appelation -	<%= wine.appelation %></li>
+        <li>Varietal - <%= wine.varietal.titleize %></li>
+        <li>Appelation -	<%= wine.appelation.titleize %></li>
         <li>Vintage - <%= wine.vintage %></li>
         <li>Price - $<%= wine.price %></li>
       </ul>

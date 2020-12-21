@@ -16,7 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
-    <link rel="stylesheet" href="/stylesheets/add-styles.css" />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
 
   </head>
   <body>
@@ -32,7 +32,7 @@
 
       <nav >
         <% if logged_in? %>
-          Welcome Back! <%= current_user.name %> |
+          Logged in as: <%= current_user.name.titleize %> |
           <a href="/wines">My Wines</a> |
           <a href="/users/<%= current_user.id %>">My Profile</a> |
           <a href="/wines/new">Add New Wine</a> |
