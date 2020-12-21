@@ -22,6 +22,7 @@ class WinesController < ApplicationController
     vintage: params[:wine][:vintage], price: params[:wine][:price], image_url: params[:wine][:image_url], tasting_notes: params[:wine][:tasting_notes], 
     user_id: current_user.id)
 
+    # save triggers ActiveRecord input validation 
     if wine.save
       flash[:message] = "Successfully added wine to your collection!"
       redirect "/wines/#{wine.id}"
@@ -51,36 +52,34 @@ class WinesController < ApplicationController
   end
 
   # PATCH: /wines/5
+  # Send our params to and update new wine (or resource)
   patch "/wines/:id" do
-    if logged_in?
-      @wine = Wine.find_by(:id => params[:id])
-      if authorized_to_edit?(@wine) && @wine.update(name: params[:wine][:name], varietal: params[:wine][:varietal], appelation: params[:wine][:appelation], 
-        vintage: params[:wine][:vintage], price: params[:wine][:price], image_url: params[:wine][:image_url], tasting_notes: params[:wine][:tasting_notes])        
-        flash[:message] = "Successfully updated Wine!"
-        redirect "/wines/#{@wine.id}"
-      else
-        flash[:error] = "Update failed: #{@wine.errors.full_messages.to_sentence}"
-        redirect "/wines/#{@wine.id}/edit"
-      end
+    @wine = Wine.find_by(:id => params[:id])
+
+    # update triggers ActiveRecord input validation
+    if @wine && @wine.update(name: params[:wine][:name], varietal: params[:wine][:varietal], appelation: params[:wine][:appelation], 
+      vintage: params[:wine][:vintage], price: params[:wine][:price], image_url: params[:wine][:image_url], tasting_notes: params[:wine][:tasting_notes])        
+      flash[:message] = "Successfully updated Wine!"
+      redirect "/wines/#{@wine.id}"
     else
-      redirect "/login"
+      flash[:error] = "Update failed: #{@wine.errors.full_messages.to_sentence}"
+      redirect "/wines/#{@wine.id}/edit"
     end
   end
 
   # DELETE: /wines/5/delete
   delete "/wines/:id/delete" do
-    if logged_in?
-      @wine = Wine.find_by(:id => params[:id])
-      if authorized_to_edit?(@wine)
-        @wine.delete
-        flash[:message] = "Successfully deleted Wine!"
-        redirect "/wines"
-      else
-        flash[:error] = "You are not authorized to delete this Wine!"
-        redirect "/wines/#{@wine.id}"
-      end
+    @wine = Wine.find_by(:id => params[:id])
+    if authorized_to_edit?(@wine)
+      @wine.delete
+      flash[:message] = "Successfully deleted Wine!"
+      redirect "/wines"
     else
-      redirect "/login"
+      flash[:error] = "You are not authorized to delete this Wine!"
+      redirect "/wines/#{@wine.id}"
     end
   end
+
 end
+      
+  

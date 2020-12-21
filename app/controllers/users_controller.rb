@@ -61,24 +61,27 @@ class UsersController < ApplicationController
   # GET: /users/5/edit
   get "/users/:id/edit" do
     @user = User.find_by(:id => params[:id])
-    erb :"/users/edit.html"
+    if logged_in?
+      erb :"/users/edit.html"
+    else
+      flash[:error] = "You can only edit your account!"
+      redirect "/users"
+    end
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
-    if logged_in?
-      @user = User.find_by(:id => params[:id])
-      if @user == current_user && @user.update(:name => params[:name], :email => params[:email])        
-        flash[:message] = "Successfully updated profile!"
-        redirect "/users/#{@user.id}"
-      else
-        flash[:error] = "Update failed: #{@user.errors.full_messages.to_sentence}"
-        redirect "/users/#{@user.id}/edit"
-      end
+    @user = User.find_by(:id => params[:id])
+    # update triggers ActiveRecord input validation
+    if @user == current_user && @user.update(:name => params[:name], :email => params[:email])        
+      flash[:message] = "Successfully updated profile!"
+      redirect "/users/#{@user.id}"
     else
-      redirect "/login"
+      flash[:error] = "Update failed: #{@user.errors.full_messages.to_sentence}"
+      redirect "/users/#{@user.id}/edit"
     end
   end
+    
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
