@@ -1,1 +1,21 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h3>Add a New Wine</h3>
+
+<form action="/wines" method="POST">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="chandra@example.com" name="email">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+

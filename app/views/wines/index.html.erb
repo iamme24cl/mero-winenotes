@@ -1,1 +1,22 @@
-<h1>This is the Model's index page.</h1>
+<h2>My Wines</h2>
+
+<div class="row">
+  <% @wines.each do |wine| %>
+
+    <div style="text-align:center" class="col-md-4">
+      <a target="_blank" href="<%= wine.image_url %>">
+        <img src="<%= wine.image_url %>">
+      </a>
+      <br><br>
+
+      <h5><a href="/wines/<%= wine.id %>"><%= wine.name %></a></h5>
+      <ul>
+        <li>Varietal - <%= wine.varietal %></li>
+        <li>Appelation -	<%= wine.appelation %></li>
+        <li>Vintage - <%= wine.vintage %></li>
+      </ul>
+	  </div>
+
+
+  <% end %>
+</div>

@@ -65,13 +65,13 @@ The bang versions (e.g. save!) raise an exception if the record is invalid. The 
 
 ## playlists/show.erb
 
-<% if authorized_to_edit?(@post) %>
+<% if authorized_to_edit?(@wine) %>
 
-<a href="/playlists/<%= @playlist.id %>/edit">Edit Post</a>
+<a href="/wines/<%= @wine.id %>/edit">Edit Wine</a>
 
-<form class="" action="/playlists/<%= @post.id %>" method="post">
+<form class="" action="/wines/<%= @wine.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="" value="Delete This Playlist">
+  <input type="submit" name="" value="Delete This Wine">
 </form>
 
 <% end %>

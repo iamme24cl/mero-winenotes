@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   post "/users" do
     @user = User.new(params)
 
+    # save will trigger activerecord validations
     if user.save
       # log in the user
       session[:user_id] = @user.id
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
     @user = User.find_by(:email => params[:email])
     # authenticate the user
     if @user && @user.authenticate(params[:password])
-    # log the user in and redirect to user's wines index page
+    # log the user in and redirect to user's wines index
       session[:user_id] = @user.id
       redirect "/wines"
     else
