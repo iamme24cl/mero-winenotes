@@ -19,14 +19,14 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    @user = User.new(params)
+    user = User.new(params)
 
     # save will trigger activerecord validations
     if user.save
       # log in the user
-      session[:user_id] = @user.id
+      session[:user_id] = user.id
       # redirect to user show page
-      redirect "/users/#{@user.id}"
+      redirect "/users/#{user.id}"
     else
       redirect "/users/new.html"
     end
@@ -39,11 +39,11 @@ class UsersController < ApplicationController
 
   post '/login' do
     # find the user
-    @user = User.find_by(:email => params[:email])
+    user = User.find_by(:email => params[:email])
     # authenticate the user
-    if @user && @user.authenticate(params[:password])
+    if user && user.authenticate(params[:password])
     # log the user in and redirect to user's wines index
-      session[:user_id] = @user.id
+      session[:user_id] = user.id
       redirect "/wines"
     else
       flash[:error] = "Invalid Credentials. Please try again!"
@@ -76,14 +76,14 @@ class UsersController < ApplicationController
 
   # PATCH: /users/5
   patch "/users/:id" do
-    @user = User.find_by(:id => params[:id])
+    user = User.find_by(:id => params[:id])
     # update triggers ActiveRecord input validation
-    if @user.update(:name => params[:name], :email => params[:email])        
+    if user.update(:name => params[:name], :email => params[:email])        
       flash[:message] = "Successfully updated profile!"
-      redirect "/users/#{@user.id}"
+      redirect "/users/#{user.id}"
     else
-      flash[:error] = "Update failed: #{@user.errors.full_messages.to_sentence}"
-      redirect "/users/#{@user.id}/edit"
+      flash[:error] = "Update failed: #{user.errors.full_messages.to_sentence}"
+      redirect "/users/#{user.id}/edit"
     end
   end
     

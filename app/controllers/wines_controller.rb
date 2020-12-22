@@ -64,16 +64,16 @@ class WinesController < ApplicationController
   # PATCH: /wines/5
   # Send our params to and update new wine (or resource)
   patch "/wines/:id" do
-    @wine = Wine.find_by(:id => params[:id])
+    wine = Wine.find_by(:id => params[:id])
 
     # update triggers ActiveRecord input validation
-    if @wine && @wine.update(name: params[:wine][:name], varietal: params[:wine][:varietal], appelation: params[:wine][:appelation], 
+    if wine && wine.update(name: params[:wine][:name], varietal: params[:wine][:varietal], appelation: params[:wine][:appelation], 
       vintage: params[:wine][:vintage], price: params[:wine][:price], image_url: params[:wine][:image_url], tasting_notes: params[:wine][:tasting_notes])        
       flash[:message] = "Successfully updated Wine!"
-      redirect "/wines/#{@wine.id}"
+      redirect "/wines/#{wine.id}"
     else
-      flash[:error] = "Update failed: #{@wine.errors.full_messages.to_sentence}"
-      redirect "/wines/#{@wine.id}/edit"
+      flash[:error] = "Update failed: #{wine.errors.full_messages.to_sentence}"
+      redirect "/wines/#{wine.id}/edit"
     end
   end
 
