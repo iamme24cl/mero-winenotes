@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     erb :"/users/index.html"
   end
 
+  # CREATE
   # GET: /users/new
   get "/users/new" do
     erb :"/users/new.html"
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # READ
   # GET: /users/5 
   # Users Show route
   get "/users/:id" do
@@ -58,14 +60,19 @@ class UsersController < ApplicationController
     erb :"/users/show.html"
   end
 
+  # UPDATE
   # GET: /users/5/edit
   get "/users/:id/edit" do
-    @user = User.find_by(:id => params[:id])
     if logged_in?
-      erb :"/users/edit.html"
+      @user = User.find_by(:id => params[:id])
+      if @user == current_user
+        erb :"/users/edit.html"
+      else
+        flash[:error] = "You can only edit your account!"
+        redirect "/users"
+      end
     else
-      flash[:error] = "You can only edit your account!"
-      redirect "/users"
+      redirect "/login"
     end
   end
 
@@ -73,7 +80,7 @@ class UsersController < ApplicationController
   patch "/users/:id" do
     @user = User.find_by(:id => params[:id])
     # update triggers ActiveRecord input validation
-    if @user == current_user && @user.update(:name => params[:name], :email => params[:email])        
+    if @user.update(:name => params[:name], :email => params[:email])        
       flash[:message] = "Successfully updated profile!"
       redirect "/users/#{@user.id}"
     else

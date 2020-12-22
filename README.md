@@ -1,6 +1,6 @@
 ## MeroWineNotes
 
-Welcome to MeroWineNotes. This is an app that lets you take notes of your favorite wines. When working as a sommelier, I was constantly tasting new wines and taking notes of them. My goal with this app was to build something that the user can use to take notes of wines in a pattern that sommeliers or individuals in similar fields generally use. (producer/winery name, the grape varietal(s) used to make the wine, the appelation(region), the vintage, price, tasting notes)
+Welcome to MeroWineNotes! This is an app that lets you take notes of your favorite wines. When working as a sommelier, I was constantly tasting new wines and taking notes of them. My goal with this app was to build something that the user can use to take notes of wines in a pattern that sommeliers or individuals in similar fields generally use. (producer/winery name, the grape varietal(s) used to make the wine, the appelation(region), the vintage, price, tasting notes)
 
 ## Installation
 
@@ -33,5 +33,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the TopCAWineries project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/iamme24cl/mero-winenotes/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the MeroWineNotes project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/iamme24cl/mero-winenotes/blob/main/CODE_OF_CONDUCT.md).
 
