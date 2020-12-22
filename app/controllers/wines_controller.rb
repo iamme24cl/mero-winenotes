@@ -1,9 +1,9 @@
 class WinesController < ApplicationController
   # `before` method takes in a `url pattern` for which to apply the following rule
   # require user to login before
-  before '/wines*' do
-    authentication_required
-  end
+  # before '/wines*' do
+  #   authentication_required
+  # end
 
   # GET: /wines
   get "/wines" do
@@ -15,6 +15,7 @@ class WinesController < ApplicationController
   # CREATE
   # GET: /wines/new
   get "/wines/new" do
+    authentication_required
     erb :"/wines/new.html"
   end
 
@@ -50,6 +51,7 @@ class WinesController < ApplicationController
   # UPDATE - link to edit form 
   # GET: /wines/5/edit
   get "/wines/:id/edit" do
+    authentication_required
     @wine = Wine.find_by(:id => params[:id])
     if authorized_to_edit?(@wine)
       erb :"/wines/edit.html"
@@ -77,6 +79,7 @@ class WinesController < ApplicationController
 
   # DELETE: /wines/5/delete
   delete "/wines/:id/delete" do
+    authentication_required
     @wine = Wine.find_by(:id => params[:id])
     if authorized_to_edit?(@wine)
       @wine.delete

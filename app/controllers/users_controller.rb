@@ -63,18 +63,16 @@ class UsersController < ApplicationController
   # UPDATE
   # GET: /users/5/edit
   get "/users/:id/edit" do
-    if logged_in?
-      @user = User.find_by(:id => params[:id])
-      if @user == current_user
-        erb :"/users/edit.html"
-      else
-        flash[:error] = "You can only edit your account!"
-        redirect "/users"
-      end
+    authentication_required
+    @user = User.find_by(:id => params[:id])
+    if @user == current_user
+      erb :"/users/edit.html"
     else
-      redirect "/login"
+      flash[:error] = "You can only edit your account!"
+      redirect "/users"
     end
   end
+   
 
   # PATCH: /users/5
   patch "/users/:id" do
@@ -92,18 +90,15 @@ class UsersController < ApplicationController
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-    if logged_in?
-      @user = User.find_by(:id => params[:id])
-      if @user == current_user
-        @user.delete
-        flash[:message] = "Successfully deleted account!"
-        redirect "/"
-      else
-        flash[:error] = "You are not authorized to delete this account!"
-        redirect "/users/#{@user.id}"
-      end
+    authentication_required
+    @user = User.find_by(:id => params[:id])
+    if @user == current_user
+      @user.delete
+      flash[:message] = "Successfully deleted account!"
+      redirect "/"
     else
-      redirect "/login"
+      flash[:error] = "You are not authorized to delete this account!"
+      redirect "/users/#{@user.id}"
     end
   end
 
