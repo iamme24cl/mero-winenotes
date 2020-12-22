@@ -7,6 +7,7 @@ class WinesController < ApplicationController
 
   # GET: /wines
   get "/wines" do
+    # use assiciation to display only current user's wines
     @wines = current_user.wines
     erb :"/wines/index.html"
   end
