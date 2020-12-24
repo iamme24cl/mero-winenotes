@@ -1,6 +1,6 @@
 ## MeroWineNotes
 
-Welcome to MeroWineNotes! This is an app that lets you take notes of your favorite wines. When working as a sommelier, I was constantly tasting new wines and taking notes of them. My goal with this app was to build something that the user can use to take notes of wines in a pattern that sommeliers or individuals in similar fields generally use. (producer/winery name, the grape varietal(s) used to make the wine, the appelation(region), the vintage, price, tasting notes)
+Welcome to MeroWineNotes! This is an app that lets you take notes of your favorite wines. When working as a sommelier, I was constantly tasting new wines and taking notes on them. My goal with this app was to build something that the user can use to take notes of wines in a pattern that sommeliers or individuals in similar fields generally use. (producer/winery name, the grape varietal(s) used to make the wine, the appelation(region), the vintage, price, tasting notes)
 
 ## Installation
 

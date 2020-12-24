@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "merowinenotes17890!"
+    set :session_secret, "merowinenotes1789zxcrcfgys#@0!"
     register Sinatra::Flash
   end
 
@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
     def authentication_required
       if !logged_in?
         flash[:error] = "You must be logged in."
-        redirect '/'
+        redirect '/login'
       end
     end
 
