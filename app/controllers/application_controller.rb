@@ -24,6 +24,14 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
 
+    def account_exists?
+      user = User.find_by(:email => params[:email])
+      if user
+        flash[:error] = "You already have an account with us. Please Log in."
+        redirect '/login'
+      end
+    end
+
     def authentication_required
       if !logged_in?
         flash[:error] = "You must be logged in."

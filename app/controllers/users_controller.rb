@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
+    authentication_required
     @users = User.all
     erb :"/users/index.html"
   end
@@ -19,6 +20,9 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
+    # check if account already exists using params[:email] to avoid account duplication
+    account_exists?
+
     user = User.new(params)
 
     # save will trigger activerecord validations
@@ -64,6 +68,7 @@ class UsersController < ApplicationController
   # UPDATE
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    # chexck if user is logged in
     authentication_required
     @user = User.find_by(:id => params[:id])
     if @user == current_user
