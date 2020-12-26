@@ -83,7 +83,7 @@ class UsersController < ApplicationController
   # PATCH: /users/5
   patch "/users/:id" do
     user = User.find_by(:id => params[:id])
-    # update triggers ActiveRecord input validation
+    # update triggers ActiveRecord validations
     if user.update(:name => params[:name], :email => params[:email])        
       flash[:message] = "Successfully updated profile!"
       redirect "/users/#{user.id}"

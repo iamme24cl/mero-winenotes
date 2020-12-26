@@ -31,7 +31,7 @@ class WinesController < ApplicationController
       tasting_notes: params[:wine][:tasting_notes], 
       user_id: current_user.id
     )
-    # save triggers ActiveRecord input validation 
+    # save triggers ActiveRecord validations 
     if wine.save
       flash[:message] = "Successfully added wine to your collection!"
       redirect "/wines/#{wine.id}"
@@ -66,7 +66,7 @@ class WinesController < ApplicationController
   patch "/wines/:id" do
     wine = Wine.find_by(:id => params[:id])
 
-    # update triggers ActiveRecord input validation
+    # update triggers ActiveRecord validations
     if wine && wine.update(name: params[:wine][:name], varietal: params[:wine][:varietal], appelation: params[:wine][:appelation], 
       vintage: params[:wine][:vintage], price: params[:wine][:price], image_url: params[:wine][:image_url], tasting_notes: params[:wine][:tasting_notes])        
       flash[:message] = "Successfully updated Wine!"

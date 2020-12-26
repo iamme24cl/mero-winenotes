@@ -14,7 +14,7 @@ git clone this repo https://github.com/iamme24cl/mero-winenotes to your local ma
 3. Register or Log in to use the application.
 
 ## Demo Video
-[![Walkthrough video]](https://)
+[![Walkthrough video]](https://youtu.be/0dTVA8qC5XM)
 
 
 ## Development
