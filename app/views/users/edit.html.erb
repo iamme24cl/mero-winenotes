@@ -1,6 +1,7 @@
 <h3>Edit Profile</h3>
 
 <form action="/users/<%= @user.id %>" method="POST">
+  <!--If enabled, MethodOverride overrides the form method (in this case, POST) with the HTTP verb specified by the hidden field's value-->
   <input id="hidden" type="hidden" name="_method" value="PATCH">
   <div class="form-group">
     <label for="name">Name</label>

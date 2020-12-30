@@ -10,6 +10,7 @@
   <a class="btn btn-default" href="/users/<%= @user.id %>/edit" role="button">Edit Profile</a>
 
   <form method="POST" action="/users/<%= @user.id %>/delete">
+    <!--If enabled, MethodOverride overrides the form method (in this case, POST) with the HTTP verb specified by the hidden field's value-->
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <input class="btn btn-default" type="submit" value="Delete Account">
   </form>
