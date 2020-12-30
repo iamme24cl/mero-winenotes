@@ -5,11 +5,11 @@ Welcome to MeroWineNotes! This is an app that lets you take notes of your favori
 ## Installation
 
 
-git clone this repo https://github.com/iamme24cl/mero-winenotes to your local machine
+`git clone` this repo (https://github.com/iamme24cl/mero-winenotes) to your local machine
 
 ## Usage
 
-1. cd into the app directory(mero-winenotes) and type in shotgun
+1. cd into the app directory(mero-winenotes) and run `shotgun`
 2. open your browser with local host at port 9393 (http://localhost:9393/)
 3. Register or Log in to use the application.
 
@@ -19,7 +19,7 @@ git clone this repo https://github.com/iamme24cl/mero-winenotes to your local ma
 
 ## Development
 
-After checking out the repo, run `bundle` to install dependencies. Then, run `rspec` to run the tests. You can also run `tux` for an interactive prompt that will allow you to experiment. Use `rake` to create tasks and migrations. 
+After checking out the repo, run `bundle install` to install dependencies. You can run `tux` for an interactive prompt that will allow you to experiment. Use `rake` to create tasks. 
 
 
 ## Contributing
