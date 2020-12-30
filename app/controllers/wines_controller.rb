@@ -7,16 +7,19 @@ class WinesController < ApplicationController
 
   # GET: /wines
   get "/wines" do
-    # use assiciation to display only current user's wines
-    @wines = current_user.wines
-    erb :"/wines/index.html"
+    # check of logged in and use association to display only current user's wines
+    if !authentication_required
+      @wines = current_user.wines
+      erb :"/wines/index.html"
+    end
   end
 
   # CREATE
   # GET: /wines/new
   get "/wines/new" do
-    authentication_required
-    erb :"/wines/new.html"
+    if !authentication_required
+      erb :"/wines/new.html"
+    end
   end
 
   # POST: /wines
@@ -51,13 +54,14 @@ class WinesController < ApplicationController
   # UPDATE - link to edit form 
   # GET: /wines/5/edit
   get "/wines/:id/edit" do
-    authentication_required
-    @wine = Wine.find_by(:id => params[:id])
-    if authorized_to_edit?(@wine)
-      erb :"/wines/edit.html"
-    else
-      flash[:error] = "You are not authorized to edit that wine!"
-      redirect "/wines"
+    if !authentication_required
+      @wine = Wine.find_by(:id => params[:id])
+      if authorized_to_edit?(@wine)
+        erb :"/wines/edit.html"
+      else
+        flash[:error] = "You are not authorized to edit that wine!"
+        redirect "/wines"
+      end
     end
   end
 
@@ -79,15 +83,16 @@ class WinesController < ApplicationController
 
   # DELETE: /wines/5/delete
   delete "/wines/:id/delete" do
-    authentication_required
-    @wine = Wine.find_by(:id => params[:id])
-    if authorized_to_edit?(@wine)
-      @wine.delete
-      flash[:message] = "Successfully deleted Wine!"
-      redirect "/wines"
-    else
-      flash[:error] = "You are not authorized to delete this Wine!"
-      redirect "/wines/#{@wine.id}"
+    if !authentication_required
+      @wine = Wine.find_by(:id => params[:id])
+      if authorized_to_edit?(@wine)
+        @wine.delete
+        flash[:message] = "Successfully deleted Wine!"
+        redirect "/wines"
+      else
+        flash[:error] = "You are not authorized to delete this Wine!"
+        redirect "/wines/#{@wine.id}"
+      end
     end
   end
 
