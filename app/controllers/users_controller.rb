@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
 
-  # Sign up route that renders register/signup form
-  get '/register' do
-    erb :'users/new.html'
-  end
-
   # GET: /users
   get "/users" do
     authentication_required
@@ -13,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   # CREATE
-  # GET: /users/new
+  # GET: /users/new, renders the form to create a new user
   get "/users/new" do
     erb :"/users/new.html"
   end
