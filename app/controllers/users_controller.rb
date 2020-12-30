@@ -25,7 +25,7 @@ class UsersController < ApplicationController
         # log in the user
         session[:user_id] = user.id
         flash[:message] = "Successfully registered account!"
-        # redirect to user show page
+        # redirect to user show/profile page
         redirect "/users/#{user.id}"
       else
         redirect "/users/new.html"
