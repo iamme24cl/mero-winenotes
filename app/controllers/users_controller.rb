@@ -2,9 +2,10 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
-    authentication_required
-    @users = User.all
-    erb :"/users/index.html"
+    if !authentication_required
+      @users = User.all
+      erb :"/users/index.html"
+    end
   end
 
   # CREATE
