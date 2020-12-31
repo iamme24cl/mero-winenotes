@@ -28,7 +28,8 @@ class UsersController < ApplicationController
         # redirect to user show/profile page
         redirect "/users/#{user.id}"
       else
-        redirect "/users/new.html"
+        flash[:error] = "Registration Failed: #{user.errors.full_messages.to_sentence}"
+        redirect "/users/new"
       end
     end
   end
