@@ -24,23 +24,23 @@ class WinesController < ApplicationController
 
   # POST: /wines
   post "/wines" do
-    wine = Wine.new(
+    # use user-wine association => current_user.wines.build()
+    @wine = current_user.wines.build(
       name: params[:wine][:name], 
       varietal: params[:wine][:varietal], 
       appelation: params[:wine][:appelation], 
       vintage: params[:wine][:vintage], 
       price: params[:wine][:price], 
       image_url: params[:wine][:image_url], 
-      tasting_notes: params[:wine][:tasting_notes], 
-      user_id: current_user.id
+      tasting_notes: params[:wine][:tasting_notes] 
     )
     # save triggers ActiveRecord validations 
-    if wine.save
+    if @wine.save
       flash[:message] = "Successfully added wine to your collection!"
-      redirect "/wines/#{wine.id}"
+      redirect "/wines/#{@wine.id}"
     else
-      flash[:error] = "Failed adding wine: #{wine.errors.full_messages.to_sentence}"
-      redirect "/wines/new"
+      flash[:error] = "Failed adding wine: #{@wine.errors.full_messages.to_sentence}"
+      erb :"/wines/new.html"
     end
   end
 
