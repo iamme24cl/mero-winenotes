@@ -10,51 +10,68 @@
     <title>MeroWinenotes</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="/stylesheets/main.css" />
-    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/index.css" />
 
   </head>
   <body>
-    <div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a id="logo" class="navbar-brand" href="/">MeroWineNotes</a>
 
-      <% if flash[:error] %>
-        <em class="error"><%= flash[:error] %></em>
-      <% end %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <% if flash[:message] %>
-        <em class="message"><%= flash[:message] %></em>
-      <% end %>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <% if logged_in? %>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/wines">Wines</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="users/<%= current_user.id %>">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/wines/new">Add Wine</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/users">Other Members</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/new">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-      <nav >
-        <% if logged_in? %>
-          Logged in as: <em style="color:green"><%= current_user.name.titleize %></em> |
-          <a href="/wines">My Wines</a> |
-          <a href="/users/<%= current_user.id %>">My Profile</a> |
-          <a href="/wines/new">Add New Wine</a> |
-          <a href="/users">Members</a> | 
-          <a href="/logout">Logout</a>
-        <% else %> 
-          <a href="/users/new">Register</a> |
-          <a href="/login">Login</a> 
-        <% end %>
-      </nav>
+<div class="wrapper container-fluid mt-2">
 
-        <%= yield %>
+  <% if flash[:error] %>
+    <em class="error"><%= flash[:error] %></em>
+  <% end %>
 
-      <footer class="branding">
-        <small>&copy; 2020 <strong>MeroWinenotes</strong></small>
-      </footer>
-    </div>
+  <% if flash[:message] %>
+    <em class="message"><%= flash[:message] %></em>
+  <% end %>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <!--[if lt IE 7]>
-      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-    <![endif]-->
+  
+
+    <%= yield %>
+
+  <footer class="fixed-bottom">
+    <small>&copy; 2020 <strong>MeroWinenotes</strong></small>
+  </footer>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,9 +1,11 @@
-<h2>My Wines</h2>
+<div class="row">
+  <div class="col text-center"><h2>My Wines</h2></div>
+<div>
 
 <div class="row">
   <% @wines.each do |wine| %>
 
-    <div style="text-align:center" class="col-md-4">
+    <div class="col-md-4 text-center">
       <a href="/wines/<%= wine.id %>">
         <img src="<%= wine.image_url %>" alt="<%= wine.name %>">
       </a>

@@ -1,2 +1,38 @@
-<h1 class="greeting">Welcome to MeroWinenotes!</h1>
-<h4>Please Log in or Register.</h4>
+<div class="row">
+  <div class="col text-center"><h1>Welcome to MeroWinenotes!</h1></div>
+</div>
+
+<% if !logged_in? %>
+  <div class="row">
+    <div class="col text-center"><h4>Log in or Sign up for an account.</h4></div>
+  </div>
+
+
+  <div class="container mt-2">
+    <div class="row justify-content-center">
+      <div class="col-6 text-center">
+        <a href="/login" class="btn btn-dark m-3">Login</a>
+        <a href="/users/new" class="btn btn-dark m-3">Sign Up</a>
+      </div>
+    </div>
+  <div>
+<% end %>
+
+<div class="row">
+  <div class="col text-center">
+    <img src="/images/kym-ellis-aF1NPSnDQLw-unsplash.jpg" class="img-fluid rounded" alt="Responsive image">
+  </div>
+</div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
