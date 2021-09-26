@@ -41,7 +41,7 @@
 
          <div class="mb-3">
           <label for="tasting_notes">Tasting</label>
-          <textarea type="text" class="form-control" id="tasting_notes"  name="wine[tasting_notes]" placeholder="<%= @wine.tasting_notes if @wine %>"></textarea>
+          <textarea type="text" class="form-control" id="tasting_notes"  name="wine[tasting_notes]"><%= @wine.tasting_notes if @wine %></textarea>
         </div>
 
 
