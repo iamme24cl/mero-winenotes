@@ -1,41 +1,54 @@
-<h3>Add a New Wine</h3>
-
-<form action="/wines" method="POST">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Name" name="wine[name]" value="<%= @wine.name if @wine %>">
+<div class="form container mt-5">
+  <div class="row">
+    <div class="col text-center fs-3 mb-3">
+     <h3>Add a New Wine</h3>
+    </div>
   </div>
+  
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form action="/wines" method="POST">
+        <div class="mb-3 mt-3">
+          <label class="form-label" for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name" name="wine[name]" value="<%= @wine.name if @wine %>">
+        </div>
 
-  <div class="form-group">
-    <label for="wine_varietal">Varietal</label>
-    <input type="text" class="form-control" id="wine_varietal"  name="wine[varietal]" value="<%= @wine.varietal if @wine %>">
+        <div class="mb-3">
+            <label class="form-label" for="wine_varietal">Varietal</label>
+            <input type="text" class="form-control" id="wine_varietal"  name="wine[varietal]" value="<%= @wine.varietal if @wine %>">
+        </div>
+
+        <div class="mb-3 mt-3">
+          <label for="appelation">Appelation <small>(where is the wine from?)</small></label>
+          <input type="text" class="form-control" id="appelation"  name="wine[appelation]" value="<%= @wine.appelation if @wine %>">
+        </div>
+
+        <div class="mb-3">
+          <label for="vintage">Vintage <small>(year)</small></label>
+          <input type="text" class="form-control" id="vintage" placeholder="Enter NV if no Vintage"  name="wine[vintage]" value="<%= @wine.vintage if @wine %>">
+        </div>
+
+        <div class="mb-3 mt-3">
+          <label for="price">Price</label>
+          <input type="text" class="form-control" id="name"  name="wine[price]" value="<%= @wine.price if @wine %>">
+        </div>
+
+        <div class="mb-3">
+          <label for="image_url">Image_URL</label>
+          <input type="text" class="form-control" id="image_url"  name="wine[image_url]" value="<%= @wine.image_url if @wine %>">
+        </div>
+
+         <div class="mb-3">
+          <label for="tasting_notes">Tasting</label>
+          <textarea type="text" class="form-control" id="tasting_notes"  name="wine[tasting_notes]" value="<%= @wine.tasting_notes if @wine %>"></textarea>
+        </div>
+
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-light">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
-
-  <div class="form-group">
-    <label for="appelation">Appelation</label>
-    <input type="text" class="form-control" id="appelation"  name="wine[appelation]" value="<%= @wine.appelation if @wine %>">
-  </div>
-
-  <div class="form-group">
-    <label for="vintage">Vintage</label>
-    <input type="text" class="form-control" id="vintage" placeholder="Enter NV if no Vintage"  name="wine[vintage]" value="<%= @wine.vintage if @wine %>">
-  </div>
-
-  <div class="form-group">
-    <label for="price">Price</label>
-    <input type="text" class="form-control" id="name"  name="wine[price]" value="<%= @wine.price if @wine %>">
-  </div>
-
-  <div class="form-group">
-    <label for="image_url">Image_URL</label>
-    <input type="text" class="form-control" id="image_url"  name="wine[image_url]" value="<%= @wine.image_url if @wine %>">
-  </div>
-
-  <div class="form-group">
-    <label for="tasting_notes">Tasting</label>
-    <textarea type="text" class="form-control" id="tasting_notes"  name="wine[tasting_notes]" value="<%= @wine.tasting_notes if @wine %>"></textarea>
-  </div>
-
-  <button type="submit" class="btn btn-default">Add Wine</button>
-</form>
+</div>
 

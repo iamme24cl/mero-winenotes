@@ -30,7 +30,7 @@
                 <a class="nav-link active" aria-current="page" href="/wines">Wines</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="users/<%= current_user.id %>">Profile</a>
+                <a class="nav-link" href="/users/<%= current_user.id %>">Profile</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/wines/new">Add Wine</a>
@@ -54,24 +54,26 @@
       </div>
     </nav>
 
-<div class="wrapper container-fluid mt-2">
+    <div id="wrapper" class="container-fluid mt-2 mb-5">
 
-  <% if flash[:error] %>
-    <em class="error"><%= flash[:error] %></em>
-  <% end %>
+      <% if flash[:error] %>
+        <em class="error"><%= flash[:error] %></em>
+      <% end %>
 
-  <% if flash[:message] %>
-    <em class="message"><%= flash[:message] %></em>
-  <% end %>
+      <% if flash[:message] %>
+        <em class="message"><%= flash[:message] %></em>
+      <% end %>
 
-  
+      
 
-    <%= yield %>
+        <%= yield %>
 
-  <footer class="fixed-bottom">
-    <small>&copy; 2020 <strong>MeroWinenotes</strong></small>
-  </footer>
-</div>
+    </div>
+
+    <footer class="fixed-bottom">
+      <small>&copy; 2020 <strong>MeroWinenotes</strong></small>
+    </footer>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   </body>
 </html>

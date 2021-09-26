@@ -1,37 +1,45 @@
-<h2><%= @wine.name.titleize %>, <%= @wine.varietal.titleize %></h2>
-
-
-  <a target="_blank" href="<%= @wine.image_url %>">
-    <img src="<%= @wine.image_url %>" alt="<%= @wine.name %>">
-  </a>
-  <br><br>
-
-  <div class="row">
-    <div class="col-md-4">
-      <h5><%= @wine.name.titleize %></a></h5>
-      <ul>
-        <li>Varietal - <%= @wine.varietal.titleize %></li>
-        <li>Appelation -	<%= @wine.appelation.titleize %></li>
-        <li>Vintage - <%= @wine.vintage %></li>
-        <li>Price - $<%= @wine.price %></li>
-      </ul>
-    </div>
-
-    <div class="col-md-8">
-      <p class="tasting-notes"><b>Tasting Notes</b><br><br><%= @wine.tasting_notes %></p>
+<div class="container mt-3">
+  <div class="row mb-3">
+    <div class="col fs-4">
+      <h4><%= @wine.name.titleize %>, <%= @wine.varietal.titleize %></h4>
     </div>
   </div>
 
+  <div class="row">
+      <div class="wine-card col-md-4 text-center mb-3">
+        <a target="_blank" href="<%= @wine.image_url %>">
+          <img src="<%= @wine.image_url %>" alt="<%= @wine.name %>" class="img-thumbnail">
+        </a>
+        
+        <h5 class="mt-2"><a href="/wines/<%= @wine.id %>"><%= @wine.name.titleize %></a></h5>
+        <ul>
+          <li>Varietal - <%= @wine.varietal.titleize %></li>
+          <li>Appelation -	<%= @wine.appelation.titleize %></li>
+          <li>Vintage - <%= @wine.vintage %></li>
+          <li>Price - $<%= @wine.price %></li>
+        </ul>
+      </div>
+
+      <div class="col-md-8 text-center">
+        <h4 class="fs-4">Tasting Notes</h4>
+        <p><%= @wine.tasting_notes %></p>
+
+        <div class="row mt-5">
+          <div class="col">
+            <% if authorized_to_edit?(@wine) %>
+             <a class="btn btn-dark mb-3" href="/wines/<%= @wine.id %>/edit" role="button">Edit Wine</a>
+
+              <form method="POST" action="/wines/<%= @wine.id %>/delete">
+                <input id="hidden" type="hidden" name="_method" value="DELETE">
+                <input class="btn btn-dark" type="submit" value="Delete Wine">
+              </form>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  </div>
 
 
-<% if authorized_to_edit?(@wine) %>
-  <a class="btn btn-default" href="/wines/<%= @wine.id %>/edit" role="button">Edit Wine</a>
-
-  <form method="POST" action="/wines/<%= @wine.id %>/delete">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input class="btn btn-default" type="submit" value="Delete Wine">
-  </form>
-<% end %>
 
 
  

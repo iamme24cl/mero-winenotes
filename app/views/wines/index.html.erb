@@ -1,25 +1,26 @@
-<div class="row">
-  <div class="col text-center"><h2>My Wines</h2></div>
-<div>
+<div class="container mt-3">
+  <div class="row mb-3">
+    <div class="col text-center fs-2">
+      <h2>My Wines</h2>
+    </div>
+  </div>
 
-<div class="row">
-  <% @wines.each do |wine| %>
-
-    <div class="col-md-4 text-center">
-      <a href="/wines/<%= wine.id %>">
-        <img src="<%= wine.image_url %>" alt="<%= wine.name %>">
-      </a>
-      <br><br>
-
-      <h5><a href="/wines/<%= wine.id %>"><%= wine.name.titleize %></a></h5>
-      <ul>
-        <li>Varietal - <%= wine.varietal.titleize %></li>
-        <li>Appelation -	<%= wine.appelation.titleize %></li>
-        <li>Vintage - <%= wine.vintage %></li>
-        <li>Price - $<%= wine.price %></li>
-      </ul>
-	  </div>
-
-  <% end %>
+  <div class="row">
+    <% @wines.each do |wine| %>
+      <div class="wine-card col-md-4 text-center mb-3">
+        <a href="/wines/<%= wine.id %>">
+          <img src="<%= wine.image_url %>" alt="<%= wine.name %>" class="img-thumbnail">
+        </a>
+        
+        <h5 class="mt-2"><a href="/wines/<%= wine.id %>"><%= wine.name.titleize %></a></h5>
+        <ul>
+          <li>Varietal - <%= wine.varietal.titleize %></li>
+          <li>Appelation -	<%= wine.appelation.titleize %></li>
+          <li>Vintage - <%= wine.vintage %></li>
+          <li>Price - $<%= wine.price %></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
 </div>
 

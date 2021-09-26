@@ -1,18 +1,30 @@
-<h3>Edit Profile</h3>
-
-<form action="/users/<%= @user.id %>" method="POST">
-  <!--If enabled, MethodOverride overrides the form method (in this case, POST) with the HTTP verb specified by the hidden field's value-->
-  <input id="hidden" type="hidden" name="_method" value="PATCH">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="<%= @user.name %>">
+<div class="form container mt-5">
+  <div class="row">
+    <div class="col text-center fs-3 mb-3">
+      <h3>Edit User</h3>
+    </div>
   </div>
+  
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form action="/users/<%= @user.id %>" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="PATCH">
+        <div class="mb-3 mt-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name" name="name" value="<%= @user.name %>">
+        </div>
 
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="chandra@example.com" name="email" value="<%= @user.email %>">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="chandra@example.com" name="email" value="<%= @user.email %>">
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-light">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
+</div>
 
-  <button type="submit" class="btn btn-default">Update</button>
-</form>
  
