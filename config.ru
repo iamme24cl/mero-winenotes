@@ -11,6 +11,5 @@ use Rack::MethodOverride
 
 use UsersController
 use WinesController
-use ApplicationController
+run ApplicationController
 
-run Sinatra::Application
