@@ -1,19 +1,16 @@
-ENV['SINATRA_ENV'] ||= "development"
+ENV["RACK_ENV"] ||= 'development'
 
-require 'bundler/setup'
-Bundler.require(:default, ENV['SINATRA_ENV'])
-
-set :environment, ENV['SINATRA_ENV'].to_sym
-
-database_config = {
-  :development => {
-    :adapter => "sqlite3",
-    :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
-  }
-}
-
-set :database, database_config
+require 'bundler'
+Bundler.require(:default, ENV['RACK_ENV'])
 
 
-require './app/controllers/application_controller'
+configure :development do
+  set :database, 'sqlite3:db/development.sqlite'
+end
+
+configure :production do
+  set :database, ENV['DATABASE_URL']
+end
+
+
 require_all 'app'
