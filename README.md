@@ -13,9 +13,6 @@ Welcome to MeroWineNotes! This is an app that lets you take notes of your favori
 2. open your browser with local host at port 9393 (http://localhost:9393/)
 3. Register or Log in to use the application.
 
-## Demo Video
-[![Walkthrough video]](https://youtu.be/0dTVA8qC5XM)
-
 
 ## Development
 
